@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
         } finally {
             setLoading(false);
         }
-    }
+    };
     const signOut = () => {
         try {
             Router.push('/');
@@ -32,14 +32,20 @@ export function AuthProvider({ children }) {
         } finally {
             setLoading(false);
         }
-    }
+    };
 
-    return <AuthContext.Provider value={{
-        user,
-        loading,
-        signInGitHub,
-        signOut
-    }}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider
+            value={{
+                user,
+                loading,
+                signInGitHub,
+                signOut,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
 export const AuthConsumer = AuthContext.Consumer;
